@@ -7,17 +7,22 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
-    String[] empty = new String[0];
+    ArrayList<String> empty = new ArrayList<>();
     ListView listAll;
+    ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.listAll = findViewById(R.id.listAll);
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_main,empty);
-        listAll.setAdapter(adapter);
+        this.adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, empty);
+        ListView listView = (ListView) findViewById(R.id.listAll);
+        listView.setAdapter(adapter);
     }
 
     public void onBtnClick(View view) {
@@ -26,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPostExecute(String[] result)
             {
-                empty = result;
+                adapter.addAll(result);
+                adapter.notifyDataSetChanged();
+
             }
         }.execute();
     }

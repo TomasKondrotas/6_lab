@@ -10,6 +10,7 @@
         android:id="@+id/listAll"
         android:layout_width="408dp"
         android:layout_height="241dp"
+        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
