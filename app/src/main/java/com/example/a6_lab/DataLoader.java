@@ -10,24 +10,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class DataLoader extends AsyncTask<String, Void, String> {
+public abstract class DataLoader extends AsyncTask<String, Void, String[]> {
 
-    protected String doInBackground(String... params) {
+    protected String[] doInBackground(String... params) {
         try {
-            return getRateFromECB(params[0]);
+            return getRateFromECB();
         } catch (Exception e) {
             StringWriter sw = new StringWriter();
             e.printStackTrace(new PrintWriter(sw));
-            return sw.toString();
+            return new String[]{sw.toString()};
         }
     }
 
 
-    public static String getRateFromECB(String currencyCode) throws IOException {
-        String rate = "Data were not retrieved";
+    public static String[] getRateFromECB() throws IOException {
+        String rate[] = new String[0];
         InputStream stream = downloadUrl(Constants.ECB_URL);
         try {
-            rate = Parser.getRateFromECB(stream, currencyCode);
+            rate = Parser.getRateFromECB(stream);
         }
         finally {
             if (stream != null) {
@@ -48,4 +48,5 @@ public class DataLoader extends AsyncTask<String, Void, String> {
         return conn.getInputStream();
     }
 
+    public abstract void onPostExecute(String result);
 }
