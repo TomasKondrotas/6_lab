@@ -16,7 +16,7 @@ public class Parser {
     public static String[] getRateFromECB(InputStream stream) throws IOException {
         String result = "";
         String currencyName = "";
-        String[] Data = new String[32];
+        String[] Data = new String[34];
         try {
             DocumentBuilderFactory xmlDocFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder xmlDocBuilder = xmlDocFactory.newDocumentBuilder();

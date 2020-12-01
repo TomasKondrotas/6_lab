@@ -8,7 +8,7 @@ import java.net.URL;
 public class DataManager {
 
     public static String[] getRateFromECB() throws IOException {
-        String rate[] = new String[32];
+        String rate[] = new String[34];
         InputStream stream = downloadUrl(Constants.ECB_URL);
         try {
             rate = Parser.getRateFromECB(stream);
