@@ -10,9 +10,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public abstract class DataLoader extends AsyncTask<String, Void, String[]> {
+public abstract class DataLoader extends AsyncTask<Void, Void, String[]> {
 
-    protected String[] doInBackground(String... params) {
+    protected String[] doInBackground(Void... params) {
         try {
             return getRateFromECB();
         } catch (Exception e) {
@@ -48,5 +48,5 @@ public abstract class DataLoader extends AsyncTask<String, Void, String[]> {
         return conn.getInputStream();
     }
 
-    public abstract void onPostExecute(String result);
+   // public abstract void onPostExecute(String[] result);
 }

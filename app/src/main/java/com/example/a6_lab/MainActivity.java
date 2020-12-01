@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
         new DataLoader(){
             @Override
-            public void onPostExecute(String result)
+            public void onPostExecute(String[] result)
             {
-
+                empty = result;
             }
         }.execute();
     }
